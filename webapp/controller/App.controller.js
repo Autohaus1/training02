@@ -21,6 +21,7 @@ sap.ui.define([
 			});
 			this.setModel(oViewModel, "appView");
 
+          /* Sperre von Butoons und ähnlichen um zu warten, dass die Daten komplett geladen wurden*/
 			fnSetAppNotBusy = function() {
 				oViewModel.setProperty("/busy", false);
 				oViewModel.setProperty("/delay", iOriginalBusyDelay);
@@ -28,6 +29,7 @@ sap.ui.define([
 
 			this.getOwnerComponent().getModel().metadataLoaded()
 				.then(fnSetAppNotBusy);
+				/*Sperre aufheben */
 
 			// Makes sure that master view is hidden in split app
 			// after a new list entry has been selected.
