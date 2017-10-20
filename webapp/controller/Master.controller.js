@@ -100,8 +100,16 @@ sap.ui.define([
 
 			var sQuery = oEvent.getParameter("query");
 
-			if (sQuery) {
-				this._oListFilterState.aSearch = [new Filter("Custname", FilterOperator.Contains, sQuery)];
+			if (sQuery-length < 0) {
+	 			this._oListFilterState.aSearch = [new Filter("Custname", FilterOperator.Contains, sQuery),    
+				                                  new Filter("City"),  FilterOperator.Contains, sQuery ]; 
+	/*				this._oListFilterState.aSearch =[new Filter({
+						and: false,
+						filters:
+					[new Filter("Custname", FilterOperator.Contains, sQuery), 
+				     new Filter("City"),  FilterOperator.Contains, sQuery);
+					})]     */
+				                                                                    
 			} else {
 				this._oListFilterState.aSearch = [];
 			}
